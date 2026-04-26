@@ -56,9 +56,24 @@
 
       <p style="margin-top: 28px; text-align: center; font-family: Georgia, serif; font-size: 12px; color: #5a4010;">
         Terminvereinbarungen:
-        <a href="mailto:bernhard@die-ofenrohre.de">bernhard@die-ofenrohre.de</a>
-        &nbsp;&middot;&nbsp; Tel. 07644&nbsp;&ndash;&nbsp;930025
+        <span id="termine-mail-bernhard"></span>
+        &nbsp;&middot;&nbsp; Tel. 07644&nbsp;&ndash;&nbsp;930025 (Bernhard)
+        <br>
+        <span id="termine-mail-markus"></span>
+        &nbsp;&middot;&nbsp; Tel. 07821&nbsp;&ndash;&nbsp;67865 (Markus)
       </p>
+      <script>
+      (function(){
+        var contacts=[
+          {id:'termine-mail-bernhard', u:'bernhard', d:'die-ofenrohre.de'},
+          {id:'termine-mail-markus',   u:'banjotubageige', d:'gmail.com'}
+        ];
+        contacts.forEach(function(c){
+          var el=document.getElementById(c.id);
+          el.innerHTML='<a href="mailto:'+c.u+'@'+c.d+'">'+c.u+'@'+c.d+'</a>';
+        });
+      })();
+      </script>
 
     
 
