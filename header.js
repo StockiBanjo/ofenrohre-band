@@ -1,4 +1,4 @@
-fetch('/header.html')
+fetch('header.html')
   .then(function(r) { return r.text(); })
   .then(function(html) {
     var el = document.getElementById('header-placeholder');
@@ -6,5 +6,5 @@ fetch('/header.html')
   });
 
 var s = document.createElement('script');
-s.src = '/back-nav.js';
+s.src = 'back-nav.js';
 document.head.appendChild(s);

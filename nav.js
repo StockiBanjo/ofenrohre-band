@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-fetch('/nav.html')
+fetch('nav.html')
   .then(function(r) { return r.text(); })
   .then(function(html) {
     var placeholder = document.getElementById('nav-placeholder');

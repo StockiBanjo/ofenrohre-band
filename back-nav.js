@@ -36,7 +36,7 @@ function initBackNav() {
   if (!parent) return;
 
   var btn = document.createElement('a');
-  btn.href = '/' + parent;
+  btn.href = parent;
   btn.className = 'back-nav-btn';
   btn.title = 'Zurück';
   btn.innerHTML = '&#8678;';
