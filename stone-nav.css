@@ -1,0 +1,523 @@
+/* Antike Steintafel-Navigation – Die Ofenrohre */
+
+.stone-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 8px;
+  width: 110px;
+  flex-shrink: 0;
+}
+
+/*
+ * Textur-System: 6 Gradientschichten pro Stein-Element
+ *   1. Haarriss 1 – scharf, Hauptriss (dunkel + Lichtreflex an der Kante)
+ *   2. Haarriss 2 – dünnerer Nebenriss
+ *   3. Marmor-Ader (hell) – helle Kalzit-/Quarzeinlagerung
+ *   4. Marmor-Ader (dunkel) – dunkle Mineral-/Eisenoxidader
+ *   5. Körnung / Tiefenwirkung – weicher Gesamtschattenverlauf
+ *   6. Basis-Sandsteinfarbe
+ */
+
+/* ---- Basis: sandsteingelb mit Marmor und Rissen ---- */
+.stone-nav a,
+.stone-btn {
+  display: block;
+  text-decoration: none;
+  padding: 10px 8px;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #2a1a00;
+  min-height: 38px;
+  line-height: 18px;
+  box-sizing: border-box;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  position: relative;
+
+  background-image:
+    linear-gradient(17deg,
+      transparent 40%, rgba(0,0,0,0.40) 41%, rgba(0,0,0,0.30) 42%, rgba(255,240,150,0.16) 42.5%, transparent 43.5%),
+    linear-gradient(143deg,
+      transparent 57.5%, rgba(0,0,0,0.28) 58.3%, rgba(0,0,0,0.18) 59.2%, transparent 60%),
+    linear-gradient(74deg,
+      transparent 26%, rgba(255,252,225,0.42) 27%, rgba(255,248,210,0.28) 28.5%, transparent 29.5%),
+    linear-gradient(210deg,
+      transparent 44%, rgba(90,60,8,0.16) 45.5%, rgba(80,52,8,0.12) 47%, transparent 48%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg,
+      #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+
+  border: 2px solid #8a6a28;
+  border-radius: 3px 7px 4px 6px / 5px 3px 7px 4px;
+  box-shadow:
+    3px 3px 7px rgba(0,0,0,0.45),
+    inset 1px 1px 3px rgba(255,240,180,0.4),
+    inset -1px -1px 2px rgba(0,0,0,0.2);
+  text-shadow:
+    1px 1px 2px rgba(255,240,160,0.7),
+    -1px -1px 1px rgba(0,0,0,0.5);
+  transition: transform 0.15s, filter 0.15s;
+}
+
+.stone-nav a:nth-child(2) {
+  border-radius: 6px 3px 5px 7px / 4px 6px 3px 5px; transform: rotate(-0.8deg);
+  background-image:
+    linear-gradient(31deg,
+      transparent 51.5%, rgba(0,0,0,0.38) 52.5%, rgba(0,0,0,0.27) 53.5%, rgba(255,240,150,0.14) 54%, transparent 55%),
+    linear-gradient(157deg,
+      transparent 33.5%, rgba(0,0,0,0.26) 34.3%, rgba(0,0,0,0.17) 35.2%, transparent 36%),
+    linear-gradient(95deg,
+      transparent 61%, rgba(255,252,225,0.40) 62%, rgba(255,248,210,0.26) 63.5%, transparent 64.5%),
+    linear-gradient(188deg,
+      transparent 27%, rgba(90,60,8,0.15) 28.5%, rgba(80,52,8,0.11) 30%, transparent 31%),
+    linear-gradient(65deg,
+      rgba(0,0,0,0.05) 0%, transparent 40%, rgba(0,0,0,0.04) 72%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+}
+.stone-nav a:nth-child(3) {
+  border-radius: 4px 6px 7px 3px / 6px 4px 3px 7px; transform: rotate(0.5deg);
+  background-image:
+    linear-gradient(55deg,
+      transparent 43.5%, rgba(0,0,0,0.42) 44.5%, rgba(0,0,0,0.30) 45.5%, rgba(255,240,150,0.16) 46%, transparent 47%),
+    linear-gradient(128deg,
+      transparent 60.5%, rgba(0,0,0,0.24) 61.3%, rgba(0,0,0,0.16) 62.2%, transparent 63%),
+    linear-gradient(9deg,
+      transparent 77.5%, rgba(255,252,225,0.44) 78.5%, rgba(255,248,210,0.28) 80%, transparent 81%),
+    linear-gradient(170deg,
+      transparent 37%, rgba(90,60,8,0.17) 38.5%, rgba(80,52,8,0.12) 40%, transparent 41%),
+    linear-gradient(40deg,
+      rgba(0,0,0,0.07) 0%, transparent 35%, rgba(0,0,0,0.05) 65%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+}
+.stone-nav a:nth-child(4) {
+  border-radius: 7px 4px 3px 6px / 3px 7px 5px 4px; transform: rotate(-0.4deg);
+  background-image:
+    linear-gradient(162deg,
+      transparent 37.5%, rgba(0,0,0,0.40) 38.5%, rgba(0,0,0,0.29) 39.5%, rgba(255,240,150,0.14) 40%, transparent 41%),
+    linear-gradient(44deg,
+      transparent 54.5%, rgba(0,0,0,0.25) 55.3%, rgba(0,0,0,0.16) 56.2%, transparent 57%),
+    linear-gradient(97deg,
+      transparent 22%, rgba(255,252,225,0.42) 23%, rgba(255,248,210,0.27) 24.5%, transparent 25.5%),
+    linear-gradient(218deg,
+      transparent 54%, rgba(90,60,8,0.16) 55.5%, rgba(80,52,8,0.11) 57%, transparent 58%),
+    linear-gradient(75deg,
+      rgba(0,0,0,0.06) 0%, transparent 42%, rgba(0,0,0,0.04) 70%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+}
+.stone-nav a:nth-child(5) {
+  border-radius: 3px 5px 6px 4px / 7px 3px 4px 6px; transform: rotate(0.7deg);
+  background-image:
+    linear-gradient(22deg,
+      transparent 46.5%, rgba(0,0,0,0.38) 47.5%, rgba(0,0,0,0.27) 48.5%, rgba(255,240,150,0.15) 49%, transparent 50%),
+    linear-gradient(139deg,
+      transparent 62.5%, rgba(0,0,0,0.26) 63.3%, rgba(0,0,0,0.17) 64.2%, transparent 65%),
+    linear-gradient(76deg,
+      transparent 31%, rgba(255,252,225,0.40) 32%, rgba(255,248,210,0.26) 33.5%, transparent 34.5%),
+    linear-gradient(195deg,
+      transparent 47%, rgba(90,60,8,0.15) 48.5%, rgba(80,52,8,0.11) 50%, transparent 51%),
+    linear-gradient(55deg,
+      rgba(0,0,0,0.05) 0%, transparent 36%, rgba(0,0,0,0.04) 66%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+}
+.stone-nav a:nth-child(6) {
+  border-radius: 5px 7px 4px 3px / 4px 5px 6px 3px; transform: rotate(-0.6deg);
+  background-image:
+    linear-gradient(48deg,
+      transparent 55.5%, rgba(0,0,0,0.41) 56.5%, rgba(0,0,0,0.29) 57.5%, rgba(255,240,150,0.14) 58%, transparent 59%),
+    linear-gradient(121deg,
+      transparent 28.5%, rgba(0,0,0,0.24) 29.3%, rgba(0,0,0,0.16) 30.2%, transparent 31%),
+    linear-gradient(167deg,
+      transparent 73.5%, rgba(255,252,225,0.42) 74.5%, rgba(255,248,210,0.27) 76%, transparent 77%),
+    linear-gradient(225deg,
+      transparent 41%, rgba(90,60,8,0.16) 42.5%, rgba(80,52,8,0.12) 44%, transparent 45%),
+    linear-gradient(30deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+}
+.stone-nav a:nth-child(7) {
+  border-radius: 6px 3px 7px 5px / 5px 6px 3px 7px; transform: rotate(0.3deg);
+  background-image:
+    linear-gradient(13deg,
+      transparent 42.5%, rgba(0,0,0,0.39) 43.5%, rgba(0,0,0,0.28) 44.5%, rgba(255,240,150,0.15) 45%, transparent 46%),
+    linear-gradient(154deg,
+      transparent 66.5%, rgba(0,0,0,0.25) 67.3%, rgba(0,0,0,0.16) 68.2%, transparent 69%),
+    linear-gradient(82deg,
+      transparent 19%, rgba(255,252,225,0.43) 20%, rgba(255,248,210,0.28) 21.5%, transparent 22.5%),
+    linear-gradient(200deg,
+      transparent 57%, rgba(90,60,8,0.16) 58.5%, rgba(80,52,8,0.12) 60%, transparent 61%),
+    linear-gradient(60deg,
+      rgba(0,0,0,0.06) 0%, transparent 40%, rgba(0,0,0,0.04) 70%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+}
+.stone-nav a:nth-child(8) {
+  border-radius: 4px 6px 3px 7px / 6px 3px 7px 4px; transform: rotate(-0.9deg);
+  background-image:
+    linear-gradient(61deg,
+      transparent 49.5%, rgba(0,0,0,0.40) 50.5%, rgba(0,0,0,0.28) 51.5%, rgba(255,240,150,0.15) 52%, transparent 53%),
+    linear-gradient(136deg,
+      transparent 35.5%, rgba(0,0,0,0.26) 36.3%, rgba(0,0,0,0.17) 37.2%, transparent 38%),
+    linear-gradient(94deg,
+      transparent 81.5%, rgba(255,252,225,0.42) 82.5%, rgba(255,248,210,0.27) 84%, transparent 85%),
+    linear-gradient(175deg,
+      transparent 21%, rgba(90,60,8,0.15) 22.5%, rgba(80,52,8,0.11) 24%, transparent 25%),
+    linear-gradient(45deg,
+      rgba(0,0,0,0.05) 0%, transparent 37%, rgba(0,0,0,0.04) 67%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+}
+
+/* ---- Hinweis-Button – terrakotta abgesetzt ---- */
+.stone-nav a.stone-warn {
+  margin-top: auto;
+  font-size: 12px;
+  background-image:
+    linear-gradient(17deg,
+      transparent 40%, rgba(0,0,0,0.40) 41%, rgba(0,0,0,0.30) 42%, rgba(255,210,150,0.16) 42.5%, transparent 43.5%),
+    linear-gradient(143deg,
+      transparent 57.5%, rgba(0,0,0,0.28) 58.3%, rgba(0,0,0,0.18) 59.2%, transparent 60%),
+    linear-gradient(74deg,
+      transparent 26%, rgba(255,230,200,0.38) 27%, rgba(255,220,185,0.24) 28.5%, transparent 29.5%),
+    linear-gradient(210deg,
+      transparent 44%, rgba(100,40,8,0.18) 45.5%, rgba(90,32,6,0.13) 47%, transparent 48%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.07) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg,
+      #c87850 0%, #b86030 20%, #a85020 40%, #b86828 60%, #cc8050 80%, #b86030 100%);
+  border-color: #7a3818;
+  color: #1a0800;
+  text-shadow:
+    1px 1px 2px rgba(255,200,140,0.5),
+    -1px -1px 1px rgba(0,0,0,0.6);
+}
+.stone-nav a.stone-warn.stone-active {
+  background-image:
+    linear-gradient(17deg,
+      transparent 40%, rgba(0,0,0,0.45) 41%, rgba(0,0,0,0.35) 42%, transparent 43%),
+    linear-gradient(143deg,
+      transparent 57.5%, rgba(0,0,0,0.32) 58.5%, transparent 59.5%),
+    linear-gradient(74deg,
+      transparent 26%, rgba(200,160,130,0.24) 27.5%, transparent 29%),
+    linear-gradient(210deg,
+      transparent 44%, rgba(80,20,0,0.20) 46%, transparent 48%),
+    linear-gradient(50deg, rgba(0,0,0,0.10) 0%, transparent 45%, transparent 100%),
+    linear-gradient(135deg, #8a3818 0%, #7a2808 20%, #6a1800 40%, #803020 60%, #984030 80%, #7a2810 100%);
+  border-color: #5a1800;
+  color: #fff0e0;
+}
+
+/* ---- Home – olivgrün abgesetzt ---- */
+.stone-nav a.stone-home {
+  background-image:
+    linear-gradient(17deg,
+      transparent 40%, rgba(0,0,0,0.38) 41%, rgba(0,0,0,0.27) 42%, rgba(180,230,140,0.16) 42.5%, transparent 43.5%),
+    linear-gradient(143deg,
+      transparent 57.5%, rgba(0,0,0,0.25) 58.3%, rgba(0,0,0,0.16) 59.2%, transparent 60%),
+    linear-gradient(74deg,
+      transparent 26%, rgba(220,250,200,0.38) 27%, rgba(210,240,190,0.24) 28.5%, transparent 29.5%),
+    linear-gradient(210deg,
+      transparent 44%, rgba(30,60,8,0.14) 45.5%, rgba(20,50,5,0.10) 47%, transparent 48%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg,
+      #8aaa60 0%, #789848 20%, #688838 40%, #7e9e50 60%, #96b868 80%, #7a9c48 100%);
+  border-color: #507030;
+  color: #0f1e00;
+  text-shadow:
+    1px 1px 2px rgba(200,240,140,0.5),
+    -1px -1px 1px rgba(0,0,0,0.55);
+}
+
+/* ---- Aktive Seite – tief eingraviert ---- */
+.stone-nav a.stone-active {
+  background-image:
+    linear-gradient(17deg,
+      transparent 40%, rgba(0,0,0,0.45) 41%, rgba(0,0,0,0.36) 42%, transparent 43%),
+    linear-gradient(143deg,
+      transparent 57.5%, rgba(0,0,0,0.32) 58.5%, transparent 59.5%),
+    linear-gradient(74deg,
+      transparent 26%, rgba(180,160,100,0.22) 27.5%, transparent 29%),
+    linear-gradient(210deg,
+      transparent 44%, rgba(40,25,0,0.20) 46%, transparent 48%),
+    linear-gradient(50deg, rgba(0,0,0,0.12) 0%, transparent 45%, transparent 100%),
+    linear-gradient(135deg,
+      #8a7030 0%, #7a6020 20%, #6a5018 40%, #806828 60%, #987840 80%, #7a6022 100%);
+  border-color: #5a4010;
+  color: #fff8e0;
+  text-shadow:
+    -1px -1px 2px rgba(0,0,0,0.85),
+    1px 1px 1px rgba(255,220,100,0.3);
+  box-shadow:
+    inset 3px 3px 6px rgba(0,0,0,0.55),
+    inset -1px -1px 2px rgba(255,220,100,0.1),
+    1px 1px 3px rgba(0,0,0,0.3);
+  transform: rotate(0deg) !important;
+}
+
+/* ---- Hover ---- */
+.stone-nav a:not(.stone-active):hover,
+.stone-btn:hover {
+  transform: rotate(0deg) translateY(-2px) !important;
+  filter: brightness(1.12);
+  box-shadow:
+    5px 5px 12px rgba(0,0,0,0.45),
+    inset 1px 1px 4px rgba(255,240,180,0.5),
+    inset -1px -1px 2px rgba(0,0,0,0.15);
+}
+
+/* ---- Button-Variante ---- */
+.stone-btn {
+  display: inline-block;
+  min-height: auto;
+  padding: 10px 24px;
+  border-radius: 4px 8px 5px 7px / 6px 4px 8px 5px;
+  margin-top: 20px;
+}
+
+/* ---- Musiker-Namenstafeln ---- */
+.stone-musicians {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  padding: 10px 20px 24px;
+}
+.stone-musicians a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: italic;
+  color: #2a1a00;
+  padding: 8px 20px 12px;
+  letter-spacing: 1px;
+  text-shadow:
+    1px 1px 2px rgba(255,240,160,0.8),
+    -1px -1px 1px rgba(0,0,0,0.5);
+  background-image:
+    linear-gradient(17deg,
+      transparent 40%, rgba(0,0,0,0.40) 41%, rgba(0,0,0,0.29) 42%, rgba(255,240,150,0.16) 42.5%, transparent 43.5%),
+    linear-gradient(143deg,
+      transparent 57.5%, rgba(0,0,0,0.26) 58.3%, rgba(0,0,0,0.17) 59.2%, transparent 60%),
+    linear-gradient(74deg,
+      transparent 26%, rgba(255,252,225,0.44) 27%, rgba(255,248,210,0.30) 28.5%, transparent 29.5%),
+    linear-gradient(210deg,
+      transparent 44%, rgba(90,60,8,0.16) 45.5%, rgba(80,52,8,0.12) 47%, transparent 48%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+  border: 2px solid #8a6a28;
+  border-radius: 5px 9px 6px 8px / 8px 5px 9px 6px;
+  box-shadow:
+    4px 4px 9px rgba(0,0,0,0.45),
+    inset 1px 1px 3px rgba(255,240,180,0.45),
+    inset -1px -1px 2px rgba(0,0,0,0.2);
+  transition: transform 0.15s, filter 0.15s;
+}
+.stone-musicians a:nth-child(1) { transform: rotate(-0.7deg); border-radius: 6px 4px 8px 5px / 4px 7px 5px 8px; }
+.stone-musicians a:nth-child(2) { transform: rotate( 0.5deg); border-radius: 4px 8px 5px 7px / 7px 4px 8px 5px; }
+.stone-musicians a:nth-child(3) { transform: rotate(-0.4deg); border-radius: 8px 5px 7px 4px / 5px 8px 4px 7px; }
+.stone-musicians a:nth-child(4) { transform: rotate( 0.8deg); border-radius: 5px 7px 4px 8px / 8px 5px 6px 4px; }
+.stone-musicians a:nth-child(5) { transform: rotate(-0.6deg); border-radius: 7px 4px 6px 5px / 4px 6px 5px 7px; }
+.stone-musicians a:hover {
+  transform: rotate(0deg) translateY(-3px) !important;
+  filter: brightness(1.12);
+  box-shadow:
+    5px 5px 13px rgba(0,0,0,0.45),
+    inset 1px 1px 4px rgba(255,240,180,0.5),
+    inset -1px -1px 2px rgba(0,0,0,0.15);
+}
+
+/* ---- Antike Steintafel-Tabelle ---- */
+table.stone-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 3px solid #8a6a28;
+  border-radius: 6px 10px 8px 7px / 8px 6px 10px 7px;
+  box-shadow:
+    5px 5px 14px rgba(0,0,0,0.45),
+    inset 0 0 6px rgba(255,240,180,0.15);
+  background-image:
+    linear-gradient(23deg,
+      transparent 48%, rgba(0,0,0,0.14) 49%, rgba(0,0,0,0.09) 50%, transparent 51%),
+    linear-gradient(74deg,
+      transparent 30%, rgba(255,252,225,0.32) 31%, rgba(255,248,210,0.20) 32.5%, transparent 33.5%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 30%, #b89640 60%, #c8aa55 100%);
+  overflow: hidden;
+}
+table.stone-table th {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 10px 18px;
+  text-align: center;
+  color: #fff8e0;
+  text-shadow:
+    -1px -1px 2px rgba(0,0,0,0.85),
+    1px 1px 1px rgba(255,220,100,0.3);
+  background-image:
+    linear-gradient(17deg,
+      transparent 39.5%, rgba(0,0,0,0.45) 40.5%, rgba(0,0,0,0.34) 41.5%, rgba(255,230,120,0.14) 42%, transparent 43%),
+    linear-gradient(143deg,
+      transparent 56.5%, rgba(0,0,0,0.30) 57.3%, rgba(0,0,0,0.20) 58.2%, transparent 59%),
+    linear-gradient(74deg,
+      transparent 30%, rgba(180,160,100,0.30) 31%, rgba(170,150,90,0.20) 32.5%, transparent 33.5%),
+    linear-gradient(210deg,
+      transparent 48%, rgba(40,25,5,0.20) 49.5%, rgba(35,20,3,0.14) 51%, transparent 52%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.10) 0%, transparent 40%, rgba(0,0,0,0.06) 70%, transparent 100%),
+    linear-gradient(135deg, #8a7030 0%, #7a6020 25%, #6a5018 50%, #806828 75%, #987840 100%);
+  border-bottom: 2px solid #5a4010;
+  border-right: 1px solid #6a5020;
+}
+table.stone-table th:last-child { border-right: none; }
+table.stone-table td {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 13px;
+  padding: 9px 18px;
+  color: #2a1a00;
+  text-shadow: 1px 1px 1px rgba(255,240,160,0.5);
+  background-image:
+    linear-gradient(17deg,
+      transparent 40%, rgba(0,0,0,0.18) 41%, rgba(0,0,0,0.11) 42%, transparent 43%),
+    linear-gradient(143deg,
+      transparent 57.5%, rgba(0,0,0,0.12) 58.5%, transparent 59.5%),
+    linear-gradient(74deg,
+      transparent 25.5%, rgba(255,252,230,0.35) 26.5%, rgba(255,248,215,0.22) 28%, transparent 29%),
+    linear-gradient(210deg,
+      transparent 53%, rgba(180,150,60,0.14) 54.5%, rgba(160,130,40,0.09) 56%, transparent 57%),
+    linear-gradient(135deg,
+      rgba(255,248,200,0.45) 0%, rgba(255,240,160,0.20) 50%, rgba(200,170,60,0.15) 100%);
+  border-bottom: 1px solid rgba(138,106,40,0.35);
+  border-right: 1px solid rgba(138,106,40,0.25);
+  vertical-align: top;
+}
+table.stone-table td:last-child { border-right: none; }
+table.stone-table tr:last-child td { border-bottom: none; }
+table.stone-table tr:hover td {
+  background-image:
+    linear-gradient(17deg,
+      transparent 40%, rgba(0,0,0,0.18) 41%, rgba(0,0,0,0.11) 42%, transparent 43%),
+    linear-gradient(143deg,
+      transparent 57.5%, rgba(0,0,0,0.12) 58.5%, transparent 59.5%),
+    linear-gradient(74deg,
+      transparent 25.5%, rgba(255,252,230,0.45) 26.5%, rgba(255,248,215,0.32) 28%, transparent 29%),
+    linear-gradient(210deg,
+      transparent 53%, rgba(180,150,60,0.18) 54.5%, rgba(160,130,40,0.13) 56%, transparent 57%),
+    linear-gradient(135deg,
+      rgba(255,248,200,0.65) 0%, rgba(255,240,160,0.40) 50%, rgba(210,180,80,0.30) 100%);
+}
+table.stone-table a {
+  color: #3a2000;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: rgba(138,106,40,0.6);
+}
+table.stone-table a:hover { color: #000; text-decoration-color: #8a6a28; }
+
+/* ---- Überschriften-Banner (z.B. Seitentitel) ---- */
+.stone-heading {
+  display: inline-block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+  color: #2a1a00;
+  padding: 12px 32px;
+  margin: 12px 0 18px;
+  letter-spacing: 1.5px;
+  text-shadow:
+    1px 1px 3px rgba(255,240,160,0.8),
+    -1px -1px 1px rgba(0,0,0,0.5);
+  background-image:
+    linear-gradient(19deg,
+      transparent 37.5%, rgba(0,0,0,0.42) 38.5%, rgba(0,0,0,0.30) 39.5%, rgba(255,240,150,0.16) 40%, transparent 41%),
+    linear-gradient(141deg,
+      transparent 54.5%, rgba(0,0,0,0.28) 55.3%, rgba(0,0,0,0.18) 56.2%, transparent 57%),
+    linear-gradient(72deg,
+      transparent 23.5%, rgba(255,252,225,0.44) 24.5%, rgba(255,248,210,0.30) 26%, transparent 27%),
+    linear-gradient(215deg,
+      transparent 40%, rgba(90,60,8,0.16) 41.5%, rgba(80,52,8,0.11) 43%, transparent 44%),
+    linear-gradient(55deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+  border: 2px solid #8a6a28;
+  border-radius: 6px 12px 8px 10px / 9px 6px 12px 8px;
+  box-shadow:
+    4px 4px 10px rgba(0,0,0,0.45),
+    inset 1px 1px 4px rgba(255,240,180,0.45),
+    inset -1px -1px 2px rgba(0,0,0,0.2);
+}
+
+/* ---- Seiten-Footer (Hinweise etc.) ---- */
+.stone-footer {
+  margin: 28px 0 8px;
+  padding: 14px 20px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 12px;
+  color: #2a1a00;
+  line-height: 1.7;
+  text-shadow: 1px 1px 1px rgba(255,240,160,0.5);
+  background-image:
+    linear-gradient(19deg,
+      transparent 40.5%, rgba(0,0,0,0.36) 41.5%, rgba(0,0,0,0.25) 42.5%, rgba(255,240,150,0.13) 43%, transparent 44%),
+    linear-gradient(142deg,
+      transparent 56.5%, rgba(0,0,0,0.24) 57.3%, rgba(0,0,0,0.15) 58.2%, transparent 59%),
+    linear-gradient(78deg,
+      transparent 31.5%, rgba(255,252,225,0.38) 32.5%, rgba(255,248,210,0.24) 34%, transparent 35%),
+    linear-gradient(205deg,
+      transparent 42%, rgba(90,60,8,0.14) 43.5%, rgba(80,52,8,0.10) 45%, transparent 46%),
+    linear-gradient(48deg,
+      rgba(0,0,0,0.05) 0%, transparent 36%, rgba(0,0,0,0.03) 66%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 20%, #b89640 40%, #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+  border: 2px solid #8a6a28;
+  border-radius: 4px 8px 5px 7px / 7px 4px 8px 5px;
+  box-shadow:
+    3px 3px 8px rgba(0,0,0,0.4),
+    inset 1px 1px 3px rgba(255,240,180,0.4),
+    inset -1px -1px 2px rgba(0,0,0,0.15);
+}
+.stone-footer strong {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+/* ---- Bildunterschrift / Galerielabel ---- */
+.stone-label {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #2a1a00;
+  text-align: center;
+  padding: 6px 10px;
+  margin-top: 5px;
+  letter-spacing: 0.4px;
+  text-shadow:
+    1px 1px 2px rgba(255,240,160,0.7),
+    -1px -1px 1px rgba(0,0,0,0.45);
+  background-image:
+    linear-gradient(31deg,
+      transparent 44%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0.27) 46%, rgba(255,240,150,0.14) 46.5%, transparent 47.5%),
+    linear-gradient(150deg,
+      transparent 62%, rgba(0,0,0,0.22) 63%, rgba(0,0,0,0.14) 64%, transparent 65%),
+    linear-gradient(85deg,
+      transparent 35%, rgba(255,252,225,0.40) 36%, rgba(255,248,210,0.26) 37.5%, transparent 38.5%),
+    linear-gradient(215deg,
+      transparent 50%, rgba(90,60,8,0.15) 51.5%, rgba(80,52,8,0.11) 53%, transparent 54%),
+    linear-gradient(45deg,
+      rgba(0,0,0,0.05) 0%, transparent 35%, rgba(0,0,0,0.03) 65%, transparent 100%),
+    linear-gradient(135deg, #d4b870 0%, #c8a850 25%, #b89640 50%, #d8be78 80%, #c8aa55 100%);
+  border: 1px solid #9a7a38;
+  border-radius: 3px 6px 4px 5px / 5px 3px 6px 4px;
+  box-shadow:
+    2px 2px 5px rgba(0,0,0,0.35),
+    inset 1px 1px 2px rgba(255,240,180,0.35),
+    inset -1px -1px 1px rgba(0,0,0,0.15);
+}

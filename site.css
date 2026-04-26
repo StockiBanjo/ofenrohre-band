@@ -1,0 +1,307 @@
+/*
+ * ============================================================
+ *  DIE OFENROHRE – Globales Design
+ *  Alle Designwerte hier zentral ändern.
+ * ============================================================
+ */
+
+:root {
+  /* Seitenfarben */
+  --page-bg:        #F8FCE0;   /* Hintergrundfarbe der Seite   */
+  --page-bg-image:  url('http://ofenrohre.de/bilder/back-rohre-salmen.jpg');
+
+  /* Text & Links */
+  --color-text:         #000000;
+  --color-link:         #0000FF;
+  --color-link-visited: #800080;
+  --color-link-active:  #FF0000;
+
+  /* Schrift */
+  --font-body:   Tahoma, Arial, sans-serif;
+  --font-serif:  Georgia, 'Times New Roman', serif;
+  --font-size:   13px;
+
+  /* Layout */
+  --content-padding: 16px;
+}
+
+/* ---- Seite ---- */
+body {
+  background-color: var(--page-bg) !important;
+  background-image: var(--page-bg-image) !important;
+  background-attachment: fixed !important;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size);
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Layout: Nav-Panel fest links, Inhalt rechts ---- */
+
+/*
+ * Das Nav-Panel wird aus dem normalen Dokumentfluss herausgenommen
+ * (position: fixed) und klebt immer links am Rand.
+ * Dadurch funktioniert das Layout unabhängig von der HTML-Tabellenstruktur.
+ * Breite hier anpassen -> --nav-width
+ */
+:root {
+  --nav-width:      130px;
+  --header-height:  90px;
+  --footer-height:  52px;
+}
+
+td.nav-panel,
+div.nav-panel {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: var(--nav-width) !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+  background-color: var(--page-bg) !important;
+  background-image:
+    linear-gradient(17deg,
+      transparent 39%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.18) 41%, rgba(255,240,150,0.10) 41.5%, transparent 42.5%),
+    linear-gradient(143deg,
+      transparent 62%, rgba(0,0,0,0.20) 62.8%, rgba(0,0,0,0.12) 63.7%, transparent 64.5%),
+    linear-gradient(74deg,
+      transparent 27%, rgba(255,252,225,0.28) 28%, rgba(255,248,210,0.16) 29.5%, transparent 30.5%),
+    linear-gradient(210deg,
+      transparent 52%, rgba(90,60,8,0.10) 53.5%, rgba(80,52,8,0.07) 55%, transparent 56%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.04) 0%, transparent 40%, rgba(0,0,0,0.03) 70%, transparent 100%),
+    linear-gradient(180deg, #f4eed4 0%, #eee4c0 50%, #f0e8c8 100%) !important;
+  border-right: 1px solid #c8b890;
+  padding: 0 !important;
+  vertical-align: top !important;
+}
+
+/* ---- Logo-Header: fixiert ganz oben ---- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:
+    linear-gradient(22deg,
+      transparent 40%, rgba(0,0,0,0.40) 41%, rgba(0,0,0,0.28) 42%, rgba(255,240,150,0.15) 42.5%, transparent 43.5%),
+    linear-gradient(158deg,
+      transparent 58%, rgba(0,0,0,0.28) 58.8%, rgba(0,0,0,0.18) 59.7%, transparent 60.5%),
+    linear-gradient(83deg,
+      transparent 30%, rgba(255,252,225,0.44) 31%, rgba(255,248,210,0.29) 32.5%, transparent 33.5%),
+    linear-gradient(210deg,
+      transparent 47%, rgba(90,60,8,0.17) 48.5%, rgba(80,52,8,0.12) 50%, transparent 51%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg,
+      #d4b870 0%, #c8a850 20%, #b89640 40%,
+      #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+  border-bottom: 3px solid #8a6a28;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.45),
+    inset 0 1px 3px rgba(255,240,180,0.5),
+    inset 0 -1px 2px rgba(0,0,0,0.2);
+}
+.site-header a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 8px 24px;
+}
+.site-header img {
+  max-height: calc(var(--header-height) - 16px);
+  width: auto;
+  display: block;
+  filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.35));
+}
+.header-pipe {
+  height: var(--header-height);
+  width: auto;
+  display: block;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.55));
+  flex-shrink: 0;
+}
+
+/* Nav startet unterhalb des Headers */
+td.nav-panel,
+div.nav-panel {
+  top: var(--header-height) !important;
+  height: calc(100vh - var(--header-height)) !important;
+}
+
+/* Alles andere nach rechts, oben und unten schieben */
+body {
+  padding-left:   calc(var(--nav-width) + 12px) !important;
+  padding-right:  12px !important;
+  padding-top:    calc(var(--header-height) + 12px) !important;
+  padding-bottom: calc(var(--footer-height) + 12px) !important;
+  box-sizing: border-box;
+}
+
+/* ---- Site-Footer: fixiert ganz unten ---- */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--footer-height);
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  gap: 32px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11px;
+  color: #2a1a00;
+  text-shadow:
+    1px 1px 1px rgba(255,240,160,0.6),
+    -1px -1px 1px rgba(0,0,0,0.35);
+  background-image:
+    linear-gradient(22deg,
+      transparent 40%, rgba(0,0,0,0.40) 41%, rgba(0,0,0,0.28) 42%, rgba(255,240,150,0.15) 42.5%, transparent 43.5%),
+    linear-gradient(158deg,
+      transparent 58%, rgba(0,0,0,0.28) 58.8%, rgba(0,0,0,0.18) 59.7%, transparent 60.5%),
+    linear-gradient(83deg,
+      transparent 30%, rgba(255,252,225,0.44) 31%, rgba(255,248,210,0.29) 32.5%, transparent 33.5%),
+    linear-gradient(210deg,
+      transparent 47%, rgba(90,60,8,0.17) 48.5%, rgba(80,52,8,0.12) 50%, transparent 51%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg,
+      #d4b870 0%, #c8a850 20%, #b89640 40%,
+      #c4a448 60%, #d8be78 80%, #c8aa55 100%);
+  border-top: 3px solid #8a6a28;
+  box-shadow:
+    0 -4px 12px rgba(0,0,0,0.4),
+    inset 0 -1px 3px rgba(255,240,180,0.4),
+    inset 0 1px 2px rgba(0,0,0,0.15);
+}
+.site-footer strong { letter-spacing: 0.4px; }
+/* 404-Seite: kein eigenes flex mehr nötig */
+.page {
+  display: block;
+}
+
+/* ---- Floating Scroll-Navigation (↑ / ↓) ---- */
+.scroll-nav {
+  position: fixed;
+  bottom: calc(var(--footer-height) + 12px);
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 900;
+}
+.scroll-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2a1a00;
+  text-decoration: none;
+  text-shadow:
+    1px 1px 2px rgba(255,240,160,0.7),
+    -1px -1px 1px rgba(0,0,0,0.5);
+  background-image:
+    linear-gradient(37deg,
+      transparent 40%, rgba(0,0,0,0.40) 41%, rgba(0,0,0,0.28) 42%, rgba(255,240,150,0.15) 42.5%, transparent 43.5%),
+    linear-gradient(143deg,
+      transparent 54%, rgba(0,0,0,0.27) 54.8%, rgba(0,0,0,0.17) 55.7%, transparent 56.5%),
+    linear-gradient(74deg,
+      transparent 26%, rgba(255,252,225,0.44) 27%, rgba(255,248,210,0.29) 28.5%, transparent 29.5%),
+    linear-gradient(210deg,
+      transparent 44%, rgba(90,60,8,0.17) 45.5%, rgba(80,52,8,0.12) 47%, transparent 48%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg,
+      #d4b870 0%, #c8a850 40%, #d8be78 70%, #c8aa55 100%);
+  border: 2px solid #8a6a28;
+  border-radius: 4px 8px 5px 7px / 7px 4px 8px 5px;
+  box-shadow:
+    3px 3px 7px rgba(0,0,0,0.45),
+    inset 1px 1px 3px rgba(255,240,180,0.4),
+    inset -1px -1px 2px rgba(0,0,0,0.2);
+  transition: transform 0.15s, filter 0.15s;
+}
+.scroll-nav a:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+/* ---- Marmor: nur Header ---- */
+.site-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('archiv/marble-bg.jpg') center / cover;
+  mix-blend-mode: overlay;
+  opacity: 0.45;
+  pointer-events: none;
+}
+/* Logo über Marmor-Overlay stellen */
+.site-header > * { position: relative; z-index: 1; }
+
+/* ---- Back-Navigation (←) ---- */
+.back-nav {
+  position: fixed;
+  bottom: calc(var(--footer-height) + 37px);
+  right: 76px;
+  z-index: 900;
+}
+.back-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2a1a00;
+  text-decoration: none;
+  text-shadow:
+    1px 1px 2px rgba(255,240,160,0.7),
+    -1px -1px 1px rgba(0,0,0,0.5);
+  background-image:
+    linear-gradient(37deg,
+      transparent 40%, rgba(0,0,0,0.40) 41%, rgba(0,0,0,0.28) 42%, rgba(255,240,150,0.15) 42.5%, transparent 43.5%),
+    linear-gradient(143deg,
+      transparent 54%, rgba(0,0,0,0.27) 54.8%, rgba(0,0,0,0.17) 55.7%, transparent 56.5%),
+    linear-gradient(74deg,
+      transparent 26%, rgba(255,252,225,0.44) 27%, rgba(255,248,210,0.29) 28.5%, transparent 29.5%),
+    linear-gradient(210deg,
+      transparent 44%, rgba(90,60,8,0.17) 45.5%, rgba(80,52,8,0.12) 47%, transparent 48%),
+    linear-gradient(50deg,
+      rgba(0,0,0,0.06) 0%, transparent 38%, rgba(0,0,0,0.04) 68%, transparent 100%),
+    linear-gradient(135deg,
+      #d4b870 0%, #c8a850 40%, #d8be78 70%, #c8aa55 100%);
+  border: 2px solid #8a6a28;
+  border-radius: 4px 8px 5px 7px / 7px 4px 8px 5px;
+  box-shadow:
+    3px 3px 7px rgba(0,0,0,0.45),
+    inset 1px 1px 3px rgba(255,240,180,0.4),
+    inset -1px -1px 2px rgba(0,0,0,0.2);
+  transition: transform 0.15s, filter 0.15s;
+}
+.back-nav-btn:hover {
+  transform: translateX(-2px);
+  filter: brightness(1.2);
+}
+
+/* ---- Links ---- */
+a               { color: var(--color-link); }
+a:visited       { color: var(--color-link-visited); }
+a:active        { color: var(--color-link-active); }
+
+/* ---- Schrift: font-Tags neutralisieren ---- */
+font[face]      { font-family: var(--font-body); }
