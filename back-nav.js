@@ -48,7 +48,7 @@ function initBackNav() {
   btn.innerHTML = '&#8678;';
 
   var nav = document.querySelector('.scroll-nav');
-  if (nav) {
+  if (nav && !nav.querySelector('.scroll-nav-back')) {
     nav.insertBefore(btn, nav.firstChild);
   }
 }
