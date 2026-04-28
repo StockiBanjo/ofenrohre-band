@@ -8,7 +8,7 @@
 :root {
   /* Seitenfarben */
   --page-bg:        #F8FCE0;   /* Hintergrundfarbe der Seite   */
-  --page-bg-image:  url('http://ofenrohre.de/bilder/back-rohre-salmen.jpg');
+  --page-bg-image:  url('img/back-rohre-salmen.jpg');
 
   /* Text & Links */
   --color-text:         #000000;
