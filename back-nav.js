@@ -36,6 +36,9 @@ var PARENT_MAP = {
   'titel.html':              'cd.html'
 };
 
+if (window.__backNavDone) return;
+window.__backNavDone = true;
+
 function initBackNav() {
   var page = window.location.pathname.split('/').pop() || 'index.html';
   var parent = PARENT_MAP[page];
@@ -48,7 +51,7 @@ function initBackNav() {
   btn.innerHTML = '&#8678;';
 
   var nav = document.querySelector('.scroll-nav');
-  if (nav && !nav.querySelector('.scroll-nav-back')) {
+  if (nav) {
     nav.insertBefore(btn, nav.firstChild);
   }
 }
