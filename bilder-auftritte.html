@@ -11,6 +11,34 @@ function extra(html, desc, wid, hig) {
 </script>
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="stone-nav.css">
+<style>
+  /* Kompakte Listen-Galerie */
+  table.auf-liste td.auf-when {
+    white-space: nowrap;
+    width: 150px;
+    font-weight: bold;
+    line-height: 1.35;
+  }
+  table.auf-liste td.auf-when .auf-datum { font-size: 15px; }
+  table.auf-liste td.auf-pics { padding: 6px 10px; }
+  table.auf-liste td.auf-pics a { display: inline-block; }
+  table.auf-liste img.auf-thumb {
+    height: 66px;
+    width: auto;
+    margin: 2px;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+  table.auf-liste video.auf-thumb { height: 66px; width: auto; margin: 2px; vertical-align: middle; }
+  table.auf-liste .auf-galerie {
+    display: inline-block;
+    text-align: center;
+    vertical-align: bottom;
+    margin: 2px 6px;
+  }
+  table.auf-liste .auf-galerie img { height: 60px; width: auto; display: block; margin: 0 auto; }
+  table.auf-liste .auf-galerie .stone-label { margin-top: 2px; padding: 3px 6px; font-size: 11px; }
+</style>
 </head>
 
 <body>
@@ -34,296 +62,127 @@ function extra(html, desc, wid, hig) {
         <span class="stone-heading">Auftritte</span>
       </p>
 
-      <!-- Teningen 2026 -->
-      <table class="stone-table" style="margin: 0 auto 24px; max-width: 820px;">
+      <table class="stone-table auf-liste" style="margin: 0 auto 24px; max-width: 900px;">
         <tbody>
           <tr>
-            <th colspan="3">Teningen &ndash; 06.08.2026</th>
+            <th style="width:150px;">Datum &amp; Anlass</th>
+            <th>Bilder</th>
           </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0007.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0007-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0008.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0008-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0009.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0009-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0010.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0010-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0011.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0011-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0012.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0012-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0013.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0013-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0014.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0014-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0017.jpg','HIT','1200','1600')">
-                <img src="auftritte/26.08.06-teningen/IMG-20260806-WA0017-k.jpg" style="height:120px; width:auto;" alt="Teningen 2026">
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
-      <!-- Winnebago Lahr 2026 -->
-      <table class="stone-table" style="margin: 0 auto 24px; max-width: 820px;">
-        <tbody>
+          <!-- Teningen 2026 -->
           <tr>
-            <th colspan="1">Winnebago Lahr &ndash; 01.08.2026</th>
-          </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/26.08.01-winnebago-lahr/IMG-20260804-WA0000.jpg','HIT','2000','912')">
-                <img src="auftritte/26.08.01-winnebago-lahr/IMG-20260804-WA0000-k.jpg" style="height:160px; width:auto;" alt="Winnebago Lahr 2026">
-              </a>
+            <td class="auf-when"><span class="auf-datum">06.08.2026</span><br>Teningen</td>
+            <td class="auf-pics">
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0007.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0007-k.jpg" alt="Teningen 2026"></a>
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0008.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0008-k.jpg" alt="Teningen 2026"></a>
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0009.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0009-k.jpg" alt="Teningen 2026"></a>
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0010.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0010-k.jpg" alt="Teningen 2026"></a>
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0011.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0011-k.jpg" alt="Teningen 2026"></a>
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0012.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0012-k.jpg" alt="Teningen 2026"></a>
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0013.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0013-k.jpg" alt="Teningen 2026"></a>
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0014.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0014-k.jpg" alt="Teningen 2026"></a>
+              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0017.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0017-k.jpg" alt="Teningen 2026"></a>
             </td>
           </tr>
-        </tbody>
-      </table>
 
-      <!-- Winnebago 2024 -->
-      <table class="stone-table" style="margin: 0 auto 24px; max-width: 820px;">
-        <tbody>
+          <!-- Winnebago Lahr 2026 -->
           <tr>
-            <th colspan="2">Winnebago &ndash; 06.07.2024</th>
-          </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('auftritte/24.07.06-winnebago/Winnebago1.jpeg','HIT','2000','1125')">
-                <img src="auftritte/24.07.06-winnebago/Winnebago1.jpeg" style="height:120px; width:auto;" alt="Winnebago 2024">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <video controls style="height:120px; width:auto;">
-                <source src="auftritte/24.07.06-winnebago/WinnebagoMamaDontLow.mp4" type="video/mp4">
-              </video>
+            <td class="auf-when"><span class="auf-datum">01.08.2026</span><br>Winnebago Lahr</td>
+            <td class="auf-pics">
+              <a href="javascript:extra('auftritte/26.08.01-winnebago-lahr/IMG-20260804-WA0000.jpg','HIT','2000','912')"><img class="auf-thumb" src="auftritte/26.08.01-winnebago-lahr/IMG-20260804-WA0000-k.jpg" alt="Winnebago Lahr 2026"></a>
             </td>
           </tr>
-        </tbody>
-      </table>
 
-      <!-- Hieronymus Schmieheim 2011 -->
-      <table class="stone-table" style="margin: 0 auto 24px; max-width: 820px;">
-        <tbody>
+          <!-- Winnebago 2024 -->
           <tr>
-            <th colspan="3">Er&#246;ffnung vom Hieronymus in Schmieheim &ndash; 02.04.2011</th>
-          </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/09-ofenrohre.jpg','HIT','1345','858')">
-                <img src="archiv/auftritte/11.04.02-hieronymus/09-ofenrohre-k.jpg" style="height:120px; width:auto;" alt="Eigentlich sollte der Mustang aufs Bild!">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/06-mustang-ofenrohre-k.jpg','HIT','239','180')">
-                <img src="archiv/auftritte/11.04.02-hieronymus/06-mustang-ofenrohre-k.jpg" style="height:120px; width:auto;" alt="aha, da ist er, der Mustang.">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/07-ofenrohre-mustang von hinten.jpg','HIT','1470','885')">
-                <img src="archiv/auftritte/11.04.02-hieronymus/07-ofenrohre-mustang von hinten-k.jpg" style="height:120px; width:auto;" alt="Ofenrohre und Mustang">
-              </a>
+            <td class="auf-when"><span class="auf-datum">06.07.2024</span><br>Winnebago</td>
+            <td class="auf-pics">
+              <a href="javascript:extra('auftritte/24.07.06-winnebago/Winnebago1.jpeg','HIT','2000','1125')"><img class="auf-thumb" src="auftritte/24.07.06-winnebago/Winnebago1.jpeg" alt="Winnebago 2024"></a>
+              <video class="auf-thumb" controls><source src="auftritte/24.07.06-winnebago/WinnebagoMamaDontLow.mp4" type="video/mp4"></video>
             </td>
           </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/01-markus-moni-motorsportfreunde.jpg','HIT','1170','885')">
-                <img src="archiv/auftritte/11.04.02-hieronymus/01-markus-moni-motorsportfreunde-k.jpg" style="height:120px; width:auto;" alt="Gespr&#228;ch mit Besitzern des Mustang">
-              </a>
-            </td>
-            <td style="padding:8px;"></td>
-            <td style="padding:8px;"></td>
-          </tr>
-        </tbody>
-      </table>
 
-      <!-- Kunst am Rhein 2010 -->
-      <table class="stone-table" style="margin: 0 auto 24px; max-width: 820px;">
-        <tbody>
+          <!-- Hieronymus Schmieheim 2011 -->
           <tr>
-            <th colspan="1">Kunst am Rhein in Weisweil &ndash; 10.10.2010</th>
-          </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a target="_blank" href="auftritte/10.10.10-kunst-am-rhein/kunst-am-rhein.rtf">
-                <img src="archiv/auftritte/10.10.10-kunst-am-rhein/kuenstler2-k.jpg" style="max-width:760px; height:auto;" alt="Kunstschaffende aus Weisweil &ndash; Klick zum Artikel">
-              </a>
-              <span class="stone-label">Vielf&#228;ltige Kunst aus Weisweil &ndash; <a href="auftritte/10.10.10-kunst-am-rhein/kunst-am-rhein.rtf" target="_blank">zum Artikel (RTF)</a></span>
+            <td class="auf-when"><span class="auf-datum">02.04.2011</span><br>Er&#246;ffnung Hieronymus, Schmieheim</td>
+            <td class="auf-pics">
+              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/09-ofenrohre.jpg','HIT','1345','858')"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/09-ofenrohre-k.jpg" alt="Eigentlich sollte der Mustang aufs Bild!"></a>
+              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/06-mustang-ofenrohre-k.jpg','HIT','239','180')"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/06-mustang-ofenrohre-k.jpg" alt="aha, da ist er, der Mustang."></a>
+              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/07-ofenrohre-mustang von hinten.jpg','HIT','1470','885')"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/07-ofenrohre-mustang von hinten-k.jpg" alt="Ofenrohre und Mustang"></a>
+              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/01-markus-moni-motorsportfreunde.jpg','HIT','1170','885')"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/01-markus-moni-motorsportfreunde-k.jpg" alt="Gespr&#228;ch mit Besitzern des Mustang"></a>
             </td>
           </tr>
-        </tbody>
-      </table>
 
-      <!-- Trike-Treffen Neuenburg 2010 -->
-      <table class="stone-table" style="margin: 0 auto 24px; max-width: 820px;">
-        <tbody>
+          <!-- Kunst am Rhein 2010 -->
           <tr>
-            <th colspan="3">Trike-Treffen in Neuenburg &ndash; 14.08.2010</th>
-          </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/03-rohre-lustig.jpg','HIT','1421','962')">
-                <img src="archiv/auftritte/10.08.14-trike-neuenburg/03-rohre-lustig-k.jpg" style="height:120px; width:auto;" alt="Das reinste Reklamebild!">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/01-rohre-von-hinten.jpg','HIT','1247','967')">
-                <img src="archiv/auftritte/10.08.14-trike-neuenburg/01-rohre-von-hinten-k.jpg" style="height:120px; width:auto;" alt="Selbst von hinten sind sie ansehnlich!">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/05-kuenstlerinnenprobe.jpg','HIT','1407','968')">
-                <img src="archiv/auftritte/10.08.14-trike-neuenburg/05-kuenstlerinnenprobe-k.jpg" style="height:120px; width:auto;" alt="Kurz vor dem Auftritt schnell noch eine Probe">
-              </a>
+            <td class="auf-when"><span class="auf-datum">10.10.2010</span><br>Kunst am Rhein, Weisweil</td>
+            <td class="auf-pics">
+              <a target="_blank" href="auftritte/10.10.10-kunst-am-rhein/kunst-am-rhein.rtf"><img class="auf-thumb" style="height:90px;" src="archiv/auftritte/10.10.10-kunst-am-rhein/kuenstler2-k.jpg" alt="Kunstschaffende aus Weisweil &ndash; Klick zum Artikel"></a>
+              <a href="auftritte/10.10.10-kunst-am-rhein/kunst-am-rhein.rtf" target="_blank">zum Artikel (RTF)</a>
             </td>
           </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/06-urauffuehrung.jpg','HIT','1274','963')">
-                <img src="archiv/auftritte/10.08.14-trike-neuenburg/06-urauffuehrung-k.jpg" style="height:120px; width:auto;" alt="Auftritt eines Jungstars">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/07-kritisch.jpg','HIT','1274','963')">
-                <img src="archiv/auftritte/10.08.14-trike-neuenburg/07-kritisch-k.jpg" style="height:120px; width:auto;" alt="Man&#246;verkritik nach Erstauftritt">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/04-aufforderung.jpg','HIT','1351','957')">
-                <img src="archiv/auftritte/10.08.14-trike-neuenburg/04-aufforderung-k.jpg" style="height:120px; width:auto;" alt="Alle zeigen auf Nefti">
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
-      <!-- Salmen Herbolzheim 2009 -->
-      <table class="stone-table" style="margin: 0 auto 24px; max-width: 820px;">
-        <tbody>
+          <!-- Trike-Treffen Neuenburg 2010 -->
           <tr>
-            <th colspan="3">Wieder im &#8222;Salmen&#8220; in Herbolzheim &ndash; 08.12.2009</th>
-          </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/01-4-mit-uli.jpg','HIT','830','630')">
-                <img src="archiv/auftritte/09.12.12-salmen/01-4-mit-uli-k.jpg" style="height:120px; width:auto;" alt="Ofenrohre mit Uli statt Jan">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/03-nefti-moni-markus-singen.jpg','HIT','830','630')">
-                <img src="archiv/auftritte/09.12.12-salmen/03-nefti-moni-markus-singen-k.jpg" style="height:120px; width:auto;" alt="Nefti, Moni und Markus singen">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/05-moni-instrumente-verkehrt.jpg','HIT','830','630')">
-                <img src="archiv/auftritte/09.12.12-salmen/05-moni-instrumente-verkehrt-k.jpg" style="height:120px; width:auto;" alt="Instrumente auf dem R&#252;cken gespielt">
-              </a>
+            <td class="auf-when"><span class="auf-datum">14.08.2010</span><br>Trike-Treffen, Neuenburg</td>
+            <td class="auf-pics">
+              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/03-rohre-lustig.jpg','HIT','1421','962')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/03-rohre-lustig-k.jpg" alt="Das reinste Reklamebild!"></a>
+              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/01-rohre-von-hinten.jpg','HIT','1247','967')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/01-rohre-von-hinten-k.jpg" alt="Selbst von hinten sind sie ansehnlich!"></a>
+              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/05-kuenstlerinnenprobe.jpg','HIT','1407','968')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/05-kuenstlerinnenprobe-k.jpg" alt="Kurz vor dem Auftritt schnell noch eine Probe"></a>
+              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/06-urauffuehrung.jpg','HIT','1274','963')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/06-urauffuehrung-k.jpg" alt="Auftritt eines Jungstars"></a>
+              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/07-kritisch.jpg','HIT','1274','963')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/07-kritisch-k.jpg" alt="Man&#246;verkritik nach Erstauftritt"></a>
+              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/04-aufforderung.jpg','HIT','1351','957')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/04-aufforderung-k.jpg" alt="Alle zeigen auf Nefti"></a>
             </td>
           </tr>
-          <tr>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/09-6-musiker.jpg','HIT','830','630')">
-                <img src="archiv/auftritte/09.12.12-salmen/09-6-musiker-k.jpg" style="height:120px; width:auto;" alt="Gast mit Bandoneon">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/16-alle-konzentriert.jpg','HIT','712','587')">
-                <img src="archiv/auftritte/09.12.12-salmen/16-alle-konzentriert-k.jpg" style="height:120px; width:auto;" alt="Alle Akteure des Abends">
-              </a>
-            </td>
-            <td style="text-align:center; padding:8px;">
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/22-hannes-angelika-ulrike.jpg','HIT','830','630')">
-                <img src="archiv/auftritte/09.12.12-salmen/22-hannes-angelika-ulrike-k.jpg" style="height:120px; width:auto;" alt="Hannes genie&#223;t die Damen">
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
-      <!-- Links zu älteren Galerien -->
-      <table class="stone-table" style="margin: 0 auto; max-width: 820px;">
-        <tbody>
+          <!-- Salmen Herbolzheim 2009 -->
           <tr>
-            <th colspan="3">&#196;ltere Auftritte</th>
+            <td class="auf-when"><span class="auf-datum">08.12.2009</span><br>&#8222;Salmen&#8220;, Herbolzheim</td>
+            <td class="auf-pics">
+              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/01-4-mit-uli.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/01-4-mit-uli-k.jpg" alt="Ofenrohre mit Uli statt Jan"></a>
+              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/03-nefti-moni-markus-singen.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/03-nefti-moni-markus-singen-k.jpg" alt="Nefti, Moni und Markus singen"></a>
+              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/05-moni-instrumente-verkehrt.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/05-moni-instrumente-verkehrt-k.jpg" alt="Instrumente auf dem R&#252;cken gespielt"></a>
+              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/09-6-musiker.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/09-6-musiker-k.jpg" alt="Gast mit Bandoneon"></a>
+              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/16-alle-konzentriert.jpg','HIT','712','587')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/16-alle-konzentriert-k.jpg" alt="Alle Akteure des Abends"></a>
+              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/22-hannes-angelika-ulrike.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/22-hannes-angelika-ulrike-k.jpg" alt="Hannes genie&#223;t die Damen"></a>
+            </td>
           </tr>
+
+          <!-- Ältere Auftritte / Galerien -->
           <tr>
-            <td style="width:160px; text-align:center; vertical-align:bottom; padding:8px;">
-              <a href="bilder-auftritte1.html" style="text-decoration:none;">
-                <img src="archiv/auftritte/09.06.26-friesenheim/06-ofenrohre-k.jpg" style="height:110px; width:auto;" alt="Fri-Night Friesenheim">
+            <td class="auf-when">&#196;ltere Auftritte</td>
+            <td class="auf-pics">
+              <a class="auf-galerie" href="bilder-auftritte1.html" style="text-decoration:none;">
+                <img src="archiv/auftritte/09.06.26-friesenheim/06-ofenrohre-k.jpg" alt="Fri-Night Friesenheim">
                 <span class="stone-label">Fri-Night, Hirschen, NANU &ndash; 2008/09</span>
               </a>
-            </td>
-            <td style="width:160px; text-align:center; vertical-align:bottom; padding:8px;">
-              <a href="bilder-auftritte2.html" style="text-decoration:none;">
-                <img src="archiv/auftritte/08.07.06-boulevard/01-ofenrohre-k.jpg" style="height:110px; width:auto;" alt="Boulevard Kenzingen">
+              <a class="auf-galerie" href="bilder-auftritte2.html" style="text-decoration:none;">
+                <img src="archiv/auftritte/08.07.06-boulevard/01-ofenrohre-k.jpg" alt="Boulevard Kenzingen">
                 <span class="stone-label">Boulevard, Brauerei, Salmen &ndash; 2007/08</span>
               </a>
-            </td>
-            <td style="width:160px; text-align:center; vertical-align:bottom; padding:8px;">
-              <a href="bilder-thun.html" style="text-decoration:none;">
-                <img src="archiv/auftritte/07.07.14-yachtclub/01-die-ofenrohre-k.jpg" style="height:110px; width:auto;" alt="Yachtclub Weisweil">
+              <a class="auf-galerie" href="bilder-thun.html" style="text-decoration:none;">
+                <img src="archiv/auftritte/07.07.14-yachtclub/01-die-ofenrohre-k.jpg" alt="Yachtclub Weisweil">
                 <span class="stone-label">Yachtclub, Salmen, WAK &ndash; 2005/07</span>
               </a>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:160px; text-align:center; vertical-align:bottom; padding:8px;">
-              <a href="bilder-weisweil.html" style="text-decoration:none;">
-                <img src="archiv/auftritte/07.05.01-kiosk-ww/15-ofenrohre-k.jpg" style="height:110px; width:auto;" alt="Kiosk Weisweil">
+              <a class="auf-galerie" href="bilder-weisweil.html" style="text-decoration:none;">
+                <img src="archiv/auftritte/07.05.01-kiosk-ww/15-ofenrohre-k.jpg" alt="Kiosk Weisweil">
                 <span class="stone-label">Kiosk &amp; Weisweil &ndash; 2007</span>
               </a>
-            </td>
-            <td style="text-align:center; vertical-align:middle; padding:8px;">
-              <a href="bilder-trike.html" style="text-decoration:none;">
+              <a class="auf-galerie" href="bilder-trike.html" style="text-decoration:none;">
                 <span class="stone-label">Trike-Treffen bei K&#246;ln</span>
               </a>
-            </td>
-            <td style="text-align:center; vertical-align:middle; padding:8px;">
-              <a href="bilder-teningen.html" style="text-decoration:none;">
+              <a class="auf-galerie" href="bilder-teningen.html" style="text-decoration:none;">
                 <span class="stone-label">Schlosskeller &amp; Vatertag 2004</span>
               </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3" style="text-align:center; vertical-align:middle; padding:8px;">
-              <a href="bilder-angler01.html" style="text-decoration:none;">
+              <a class="auf-galerie" href="bilder-angler01.html" style="text-decoration:none;">
                 <span class="stone-label">Anglerfest Weisweil &ndash; 2001</span>
               </a>
             </td>
           </tr>
+
         </tbody>
       </table>
 
-    
 
 <div class="scroll-nav">
   <a class="scroll-nav-back" href="bilder.html" title="Zurück">&#8678;</a>
