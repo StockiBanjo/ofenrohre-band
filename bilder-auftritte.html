@@ -38,6 +38,78 @@ function extra(html, desc, wid, hig) {
   }
   table.auf-liste .auf-galerie img { height: 60px; width: auto; display: block; margin: 0 auto; }
   table.auf-liste .auf-galerie .stone-label { margin-top: 2px; padding: 3px 6px; font-size: 11px; }
+
+  /* ---- Lightbox ---- */
+  .lb-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+  .lb-overlay.open { display: flex; }
+  .lb-overlay img.lb-img {
+    max-width: 92vw;
+    max-height: 86vh;
+    width: auto;
+    height: auto;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    border-radius: 3px;
+  }
+  .lb-overlay .lb-cap {
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #f4e9c8;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 14px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+    padding: 0 60px;
+  }
+  .lb-overlay .lb-count {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    color: #d8c89a;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+  }
+  .lb-overlay .lb-close,
+  .lb-overlay .lb-prev,
+  .lb-overlay .lb-next {
+    position: absolute;
+    color: #f4e9c8;
+    cursor: pointer;
+    line-height: 1;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+    transition: color .15s;
+  }
+  .lb-overlay .lb-close:hover,
+  .lb-overlay .lb-prev:hover,
+  .lb-overlay .lb-next:hover { color: #fff; }
+  .lb-overlay .lb-close { top: 10px; right: 22px; font-size: 42px; }
+  .lb-overlay .lb-prev,
+  .lb-overlay .lb-next {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 54px;
+    padding: 10px 18px;
+  }
+  .lb-overlay .lb-prev { left: 8px; }
+  .lb-overlay .lb-next { right: 8px; }
+  .lb-overlay.single .lb-prev,
+  .lb-overlay.single .lb-next,
+  .lb-overlay.single .lb-count { display: none; }
+  @media (max-width: 600px) {
+    .lb-overlay .lb-prev, .lb-overlay .lb-next { font-size: 38px; padding: 8px 10px; }
+    .lb-overlay .lb-cap { font-size: 12px; padding: 0 40px; }
+  }
 </style>
 </head>
 
@@ -73,15 +145,15 @@ function extra(html, desc, wid, hig) {
           <tr>
             <td class="auf-when"><span class="auf-datum">06.08.2026</span><br>Teningen</td>
             <td class="auf-pics">
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0007.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0007-k.jpg" alt="Teningen 2026"></a>
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0008.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0008-k.jpg" alt="Teningen 2026"></a>
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0009.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0009-k.jpg" alt="Teningen 2026"></a>
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0010.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0010-k.jpg" alt="Teningen 2026"></a>
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0011.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0011-k.jpg" alt="Teningen 2026"></a>
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0012.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0012-k.jpg" alt="Teningen 2026"></a>
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0013.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0013-k.jpg" alt="Teningen 2026"></a>
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0014.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0014-k.jpg" alt="Teningen 2026"></a>
-              <a href="javascript:extra('auftritte/26.08.06-teningen/IMG-20260806-WA0017.jpg','HIT','1200','1600')"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0017-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0007.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0007-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0008.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0008-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0009.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0009-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0010.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0010-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0011.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0011-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0012.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0012-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0013.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0013-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0014.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0014-k.jpg" alt="Teningen 2026"></a>
+              <a class="lb" href="auftritte/26.08.06-teningen/IMG-20260806-WA0017.jpg"><img class="auf-thumb" src="auftritte/26.08.06-teningen/IMG-20260806-WA0017-k.jpg" alt="Teningen 2026"></a>
             </td>
           </tr>
 
@@ -89,7 +161,7 @@ function extra(html, desc, wid, hig) {
           <tr>
             <td class="auf-when"><span class="auf-datum">01.08.2026</span><br>Winnebago Lahr</td>
             <td class="auf-pics">
-              <a href="javascript:extra('auftritte/26.08.01-winnebago-lahr/IMG-20260804-WA0000.jpg','HIT','2000','912')"><img class="auf-thumb" src="auftritte/26.08.01-winnebago-lahr/IMG-20260804-WA0000-k.jpg" alt="Winnebago Lahr 2026"></a>
+              <a class="lb" href="auftritte/26.08.01-winnebago-lahr/IMG-20260804-WA0000.jpg"><img class="auf-thumb" src="auftritte/26.08.01-winnebago-lahr/IMG-20260804-WA0000-k.jpg" alt="Winnebago Lahr 2026"></a>
             </td>
           </tr>
 
@@ -97,7 +169,7 @@ function extra(html, desc, wid, hig) {
           <tr>
             <td class="auf-when"><span class="auf-datum">06.07.2024</span><br>Winnebago</td>
             <td class="auf-pics">
-              <a href="javascript:extra('auftritte/24.07.06-winnebago/Winnebago1.jpeg','HIT','2000','1125')"><img class="auf-thumb" src="auftritte/24.07.06-winnebago/Winnebago1.jpeg" alt="Winnebago 2024"></a>
+              <a class="lb" href="auftritte/24.07.06-winnebago/Winnebago1.jpeg"><img class="auf-thumb" src="auftritte/24.07.06-winnebago/Winnebago1.jpeg" alt="Winnebago 2024"></a>
               <video class="auf-thumb" controls><source src="auftritte/24.07.06-winnebago/WinnebagoMamaDontLow.mp4" type="video/mp4"></video>
             </td>
           </tr>
@@ -106,10 +178,10 @@ function extra(html, desc, wid, hig) {
           <tr>
             <td class="auf-when"><span class="auf-datum">02.04.2011</span><br>Er&#246;ffnung Hieronymus, Schmieheim</td>
             <td class="auf-pics">
-              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/09-ofenrohre.jpg','HIT','1345','858')"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/09-ofenrohre-k.jpg" alt="Eigentlich sollte der Mustang aufs Bild!"></a>
-              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/06-mustang-ofenrohre-k.jpg','HIT','239','180')"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/06-mustang-ofenrohre-k.jpg" alt="aha, da ist er, der Mustang."></a>
-              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/07-ofenrohre-mustang von hinten.jpg','HIT','1470','885')"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/07-ofenrohre-mustang von hinten-k.jpg" alt="Ofenrohre und Mustang"></a>
-              <a href="javascript:extra('archiv/auftritte/11.04.02-hieronymus/01-markus-moni-motorsportfreunde.jpg','HIT','1170','885')"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/01-markus-moni-motorsportfreunde-k.jpg" alt="Gespr&#228;ch mit Besitzern des Mustang"></a>
+              <a class="lb" href="archiv/auftritte/11.04.02-hieronymus/09-ofenrohre.jpg"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/09-ofenrohre-k.jpg" alt="Eigentlich sollte der Mustang aufs Bild!"></a>
+              <a class="lb" href="archiv/auftritte/11.04.02-hieronymus/06-mustang-ofenrohre-k.jpg"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/06-mustang-ofenrohre-k.jpg" alt="aha, da ist er, der Mustang."></a>
+              <a class="lb" href="archiv/auftritte/11.04.02-hieronymus/07-ofenrohre-mustang von hinten.jpg"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/07-ofenrohre-mustang von hinten-k.jpg" alt="Ofenrohre und Mustang"></a>
+              <a class="lb" href="archiv/auftritte/11.04.02-hieronymus/01-markus-moni-motorsportfreunde.jpg"><img class="auf-thumb" src="archiv/auftritte/11.04.02-hieronymus/01-markus-moni-motorsportfreunde-k.jpg" alt="Gespr&#228;ch mit Besitzern des Mustang"></a>
             </td>
           </tr>
 
@@ -126,12 +198,12 @@ function extra(html, desc, wid, hig) {
           <tr>
             <td class="auf-when"><span class="auf-datum">14.08.2010</span><br>Trike-Treffen, Neuenburg</td>
             <td class="auf-pics">
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/03-rohre-lustig.jpg','HIT','1421','962')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/03-rohre-lustig-k.jpg" alt="Das reinste Reklamebild!"></a>
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/01-rohre-von-hinten.jpg','HIT','1247','967')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/01-rohre-von-hinten-k.jpg" alt="Selbst von hinten sind sie ansehnlich!"></a>
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/05-kuenstlerinnenprobe.jpg','HIT','1407','968')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/05-kuenstlerinnenprobe-k.jpg" alt="Kurz vor dem Auftritt schnell noch eine Probe"></a>
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/06-urauffuehrung.jpg','HIT','1274','963')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/06-urauffuehrung-k.jpg" alt="Auftritt eines Jungstars"></a>
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/07-kritisch.jpg','HIT','1274','963')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/07-kritisch-k.jpg" alt="Man&#246;verkritik nach Erstauftritt"></a>
-              <a href="javascript:extra('archiv/auftritte/10.08.14-trike-neuenburg/04-aufforderung.jpg','HIT','1351','957')"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/04-aufforderung-k.jpg" alt="Alle zeigen auf Nefti"></a>
+              <a class="lb" href="archiv/auftritte/10.08.14-trike-neuenburg/03-rohre-lustig.jpg"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/03-rohre-lustig-k.jpg" alt="Das reinste Reklamebild!"></a>
+              <a class="lb" href="archiv/auftritte/10.08.14-trike-neuenburg/01-rohre-von-hinten.jpg"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/01-rohre-von-hinten-k.jpg" alt="Selbst von hinten sind sie ansehnlich!"></a>
+              <a class="lb" href="archiv/auftritte/10.08.14-trike-neuenburg/05-kuenstlerinnenprobe.jpg"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/05-kuenstlerinnenprobe-k.jpg" alt="Kurz vor dem Auftritt schnell noch eine Probe"></a>
+              <a class="lb" href="archiv/auftritte/10.08.14-trike-neuenburg/06-urauffuehrung.jpg"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/06-urauffuehrung-k.jpg" alt="Auftritt eines Jungstars"></a>
+              <a class="lb" href="archiv/auftritte/10.08.14-trike-neuenburg/07-kritisch.jpg"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/07-kritisch-k.jpg" alt="Man&#246;verkritik nach Erstauftritt"></a>
+              <a class="lb" href="archiv/auftritte/10.08.14-trike-neuenburg/04-aufforderung.jpg"><img class="auf-thumb" src="archiv/auftritte/10.08.14-trike-neuenburg/04-aufforderung-k.jpg" alt="Alle zeigen auf Nefti"></a>
             </td>
           </tr>
 
@@ -139,12 +211,12 @@ function extra(html, desc, wid, hig) {
           <tr>
             <td class="auf-when"><span class="auf-datum">08.12.2009</span><br>&#8222;Salmen&#8220;, Herbolzheim</td>
             <td class="auf-pics">
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/01-4-mit-uli.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/01-4-mit-uli-k.jpg" alt="Ofenrohre mit Uli statt Jan"></a>
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/03-nefti-moni-markus-singen.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/03-nefti-moni-markus-singen-k.jpg" alt="Nefti, Moni und Markus singen"></a>
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/05-moni-instrumente-verkehrt.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/05-moni-instrumente-verkehrt-k.jpg" alt="Instrumente auf dem R&#252;cken gespielt"></a>
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/09-6-musiker.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/09-6-musiker-k.jpg" alt="Gast mit Bandoneon"></a>
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/16-alle-konzentriert.jpg','HIT','712','587')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/16-alle-konzentriert-k.jpg" alt="Alle Akteure des Abends"></a>
-              <a href="javascript:extra('archiv/auftritte/09.12.12-salmen/22-hannes-angelika-ulrike.jpg','HIT','830','630')"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/22-hannes-angelika-ulrike-k.jpg" alt="Hannes genie&#223;t die Damen"></a>
+              <a class="lb" href="archiv/auftritte/09.12.12-salmen/01-4-mit-uli.jpg"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/01-4-mit-uli-k.jpg" alt="Ofenrohre mit Uli statt Jan"></a>
+              <a class="lb" href="archiv/auftritte/09.12.12-salmen/03-nefti-moni-markus-singen.jpg"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/03-nefti-moni-markus-singen-k.jpg" alt="Nefti, Moni und Markus singen"></a>
+              <a class="lb" href="archiv/auftritte/09.12.12-salmen/05-moni-instrumente-verkehrt.jpg"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/05-moni-instrumente-verkehrt-k.jpg" alt="Instrumente auf dem R&#252;cken gespielt"></a>
+              <a class="lb" href="archiv/auftritte/09.12.12-salmen/09-6-musiker.jpg"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/09-6-musiker-k.jpg" alt="Gast mit Bandoneon"></a>
+              <a class="lb" href="archiv/auftritte/09.12.12-salmen/16-alle-konzentriert.jpg"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/16-alle-konzentriert-k.jpg" alt="Alle Akteure des Abends"></a>
+              <a class="lb" href="archiv/auftritte/09.12.12-salmen/22-hannes-angelika-ulrike.jpg"><img class="auf-thumb" src="archiv/auftritte/09.12.12-salmen/22-hannes-angelika-ulrike-k.jpg" alt="Hannes genie&#223;t die Damen"></a>
             </td>
           </tr>
 
@@ -189,6 +261,65 @@ function extra(html, desc, wid, hig) {
   <a href="#top" title="Seitenanfang">&#8679;</a>
   <a href="#unten" title="Seitenende">&#8681;</a>
 </div>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('a.lb'));
+  if (!links.length) return;
+
+  var overlay = document.createElement('div');
+  overlay.className = 'lb-overlay';
+  overlay.innerHTML =
+    '<span class="lb-count"></span>' +
+    '<span class="lb-close" title="Schlie&#223;en (Esc)">&times;</span>' +
+    '<span class="lb-prev" title="Zur&#252;ck (&#8592;)">&#10094;</span>' +
+    '<img class="lb-img" alt="">' +
+    '<span class="lb-next" title="Weiter (&#8594;)">&#10095;</span>' +
+    '<div class="lb-cap"></div>';
+  document.body.appendChild(overlay);
+
+  var imgEl = overlay.querySelector('.lb-img');
+  var capEl = overlay.querySelector('.lb-cap');
+  var countEl = overlay.querySelector('.lb-count');
+  var group = [];
+  var index = 0;
+
+  function show() {
+    var a = group[index];
+    var img = a.querySelector('img');
+    imgEl.src = a.getAttribute('href');
+    imgEl.alt = img ? img.alt : '';
+    capEl.textContent = img ? img.alt : '';
+    countEl.textContent = (index + 1) + ' / ' + group.length;
+    overlay.classList.toggle('single', group.length < 2);
+  }
+  function open(a) {
+    var cell = a.closest('td') || document;
+    group = Array.prototype.slice.call(cell.querySelectorAll('a.lb'));
+    index = Math.max(0, group.indexOf(a));
+    show();
+    overlay.classList.add('open');
+  }
+  function close() { overlay.classList.remove('open'); imgEl.src = ''; }
+  function step(n) { index = (index + n + group.length) % group.length; show(); }
+
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); open(a); });
+  });
+
+  overlay.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
+  overlay.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); step(1); });
+  overlay.querySelector('.lb-close').addEventListener('click', close);
+  imgEl.addEventListener('click', function (e) { e.stopPropagation(); });
+  overlay.addEventListener('click', close);
+
+  document.addEventListener('keydown', function (e) {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+  });
+})();
+</script>
 <script src="header.js"></script>
 <script src="nav.js"></script>
 </body>
