@@ -30,6 +30,9 @@ body {
   background-color: var(--page-bg) !important;
   background-image: var(--page-bg-image) !important;
   background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--font-size);
