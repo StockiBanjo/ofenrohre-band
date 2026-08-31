@@ -28,16 +28,28 @@
 /* ---- Seite ---- */
 body {
   background-color: var(--page-bg) !important;
-  background-image: var(--page-bg-image) !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  background-size: cover !important;
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--font-size);
   margin: 0;
   padding: 0;
+}
+
+/* Hintergrundfoto nur im Inhaltsbereich (rechts neben Nav, unter Header,
+   ueber Footer) – Header/Nav/Footer bleiben aussen vor. Ganzes Foto sichtbar. */
+body::before {
+  content: "";
+  position: fixed;
+  top:    var(--header-height);
+  left:   var(--nav-width);
+  right:  0;
+  bottom: var(--footer-height);
+  z-index: -1;
+  background-image:    var(--page-bg-image);
+  background-repeat:   no-repeat;
+  background-position: center center;
+  background-size:     contain;
+  pointer-events: none;
 }
 
 /* ---- Layout: Nav-Panel fest links, Inhalt rechts ---- */
