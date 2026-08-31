@@ -321,6 +321,30 @@ function extra(html, desc, wid, hig) {
   });
 })();
 </script>
+<script>
+/* Klick auf die Bildflaeche eines Auftritts-Videos oeffnet direkt den
+   Bild-in-Bild-Modus. Klicks auf die native Steuerleiste ("..."-Menue usw.)
+   werden vom Shadow-DOM abgefangen und bleiben unveraendert erhalten. */
+(function () {
+  var pipOk = document.pictureInPictureEnabled &&
+              HTMLVideoElement.prototype.requestPictureInPicture;
+  Array.prototype.forEach.call(document.querySelectorAll('video.auf-thumb'), function (v) {
+    if (!pipOk || v.disablePictureInPicture) return;   // ohne PiP: native Steuerung unveraendert
+    v.preload = 'metadata';
+    v.style.cursor = 'pointer';
+    v.title = 'Klick aufs Bild: Bild-in-Bild';
+    v.addEventListener('click', function () {
+      if (document.pictureInPictureElement === v) { document.exitPictureInPicture(); return; }
+      var start = function () {
+        v.play().catch(function () {});
+        v.requestPictureInPicture().catch(function () {});
+      };
+      if (v.readyState >= 1) start();
+      else { v.addEventListener('loadedmetadata', start, { once: true }); v.load(); }
+    });
+  });
+})();
+</script>
 <script src="header.js"></script>
 <script src="nav.js"></script>
 </body>
